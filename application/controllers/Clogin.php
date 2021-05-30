@@ -19,7 +19,6 @@ class Clogin extends CI_Controller
         }
 
         // tampilkan halaman login
-        // $this->load->view("user/login");
         $data['title'] = "Login";
         $this->template->template_login('user/login', $data);
     }

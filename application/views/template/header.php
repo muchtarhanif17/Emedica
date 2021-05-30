@@ -27,9 +27,16 @@ Coded by www.creative-tim.com
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <script src="https://kit.fontawesome.com/dab418b4df.js" crossorigin="anonymous"></script>
+  <!-- JQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
   <!-- CSS Files -->
   <link href="<?= base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="<?= base_url() ?>assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="<?= base_url() ?>assets/demo/demo.css" rel="stylesheet" />
+
+  <!-- SweetAlert -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>

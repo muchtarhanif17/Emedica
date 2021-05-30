@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -56,8 +56,9 @@ $route['logout'] = 'Clogin/logout';
 $route['dashboard'] = 'Cdashboard/index';
 
 $route['user'] = 'Cuser/index';
+$route['user/(:num)'] = 'Cuser/index';
 $route['user/tambah'] = 'Cuser/tambah';
-$route['user/ubah/(:num)'] = 'Cuser/ubah/$1';
+$route['user/edit/(:num)'] = 'Cuser/edit/';
 $route['user/hapus/(:num)'] = 'Cuser/hapus/$1';
 
 $route['apoteker'] = 'Capoteker/index';

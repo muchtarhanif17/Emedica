@@ -1,35 +1,42 @@
+<a href="<?= site_url('user'); ?>" class="btn btn-primary mt-0"><i class="fas fa-arrow-left"></i> &nbsp&nbspKembali</a>
+<div class="card" style="width: 800px;">
+	<!-- <div class="card-header">
+	</div> -->
+	<div class="card-body">
+		<div class="row">
+			<div class="col-6">
+				<h3><?= $title ?></h3>
+				<?php echo form_open('Cuser/ubah', array("id" => "form-user-update")) ?>
+				<input type="hidden" name="id" value="<?= $data['uid'] ?>">
+				<div class="form-group">
+					<label for="nama">Nama</label>
+					<input class="form-control" type="text" name="nama" value="<?= $data['unama'] ?>" id="nama" />
+				</div>
+				<div class="form-group">
+					<label for="email">Email</label>
+					<input class="form-control" type="email" name="email" value="<?= $data['uemail'] ?>" id="email" />
+				</div>
+				<?php if ($data['uemail'] != $this->session->userdata('user_logged')['uemail']) : ?>
+					<div class="form-group">
+						<label for="status">Status</label>
+						<select name="status" id="status" class="custom-select">
+							<option value="<?= $data['ustatus'] ?>" selected>
+								<?php if ($data['ustatus'] == 0) { ?>
+									<td>Tidak Aktif</td>
+								<?php } else { ?>
+									<td>Aktif</td>
+								<?php } ?>
+							</option>
+							<option value="1">Aktif</option>
+							<option value="0">Tidak Aktif</option>
+						</select>
+					</div>
+				<?php endif; ?>
+				<input class="btn btn-success" type="submit" name="btn" value="Ubah" />
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 
-<?php
-
-  $this->load->view("template/header.php");
-  $this->load->view("template/navbar.php");
- ?>
-
-      <div class="card" style="min-width: 800px;margin: 0 auto">
-
-    					<div class="card-header">
-                <h1>Ubah Vaksin</h1>
-    					</div>
-    					<div class="card-body">
-
-    						<form method="post">
-                  <div class="form-group">
-    								<label for="nik">Nama Vaksin</label>
-    								<input class="form-control <?php echo form_error('vaknama') ? 'is-invalid':'' ?>"
-    								 type="text" name="vaknama" value="<?= $vaksin->vaknama?>" />
-    								<div class="invalid-feedback">
-    									<?php echo form_error('vaknama') ?>
-    								</div>
-    							</div>
-
-
-                  <input type="hidden" name="vakid" value="<?= $vaksin->vakid?>">
-
-    							<input class="btn btn-success" type="submit" name="btn" value="Simpan" />
-    						</form>
-
-    					</div>
-      </div>
-<?php
-  $this->load->view("template/footer.php");
- ?>
+<script text="text/javascript" src="<?= base_url() ?>assets/js/update-data-user.js"></script>
