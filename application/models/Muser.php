@@ -17,6 +17,7 @@ class Muser extends CI_Model
             "unama" => htmlspecialchars($this->input->post('nama', true)),
             "uemail" =>  htmlspecialchars($this->input->post('email', true)),
             "upassword" => password_hash($password, PASSWORD_BCRYPT),
+            "role_user" => $this->input->post('role', true),
             "ustatus" => 1
         ];
 
@@ -62,7 +63,9 @@ class Muser extends CI_Model
         $data = [
             "unama" => htmlspecialchars($this->input->post('nama', true)),
             "uemail" =>  htmlspecialchars($this->input->post('email', true)),
+            "role_user" => $this->input->post('role', true),
             "ustatus" => $this->input->post('status', true)
+
         ];
 
 

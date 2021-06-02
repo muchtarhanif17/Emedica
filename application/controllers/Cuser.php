@@ -10,13 +10,14 @@ class Cuser extends CI_Controller
         $this->load->library("form_validation");
         $this->load->model("Muser");
         $this->load->model("Mlogin");
+        $this->load->model("Mroleuser", "role");
         if ($this->Mlogin->isNotLogin()) redirect(site_url('login'));
     }
 
     public function index()
     {
 
-        // Pagination
+        // Pagination 
         // Config
         $config['base_url'] = site_url('user/');
         $config['total_rows'] = $this->Muser->countAllUser();
@@ -50,9 +51,11 @@ class Cuser extends CI_Controller
 
 
         $data['start'] = $this->uri->segment('2');
-        $data["user"] = $this->Muser->getData($config['per_page'], $data['start']);
-
+        $data["user"] = $this->Muser->getAllData();
+        $data['role_user'] = $this->role->getRole();
         $data['title'] = "Data User";
+
+
 
         $this->template->template("user/index", $data);
     }
@@ -96,8 +99,7 @@ class Cuser extends CI_Controller
         $id = $this->uri->segment('3');
         $data['title'] = 'Ubah Data User';
         $data['data'] = $this->Muser->getSpesificData($id);
-        // var_dump($data);
-        // die;
+        $data['role'] = $this->role->getRole();
         $this->template->template("user/ubah", $data);
     }
 

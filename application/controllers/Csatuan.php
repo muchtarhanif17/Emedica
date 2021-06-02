@@ -7,65 +7,51 @@ class Csatuan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // $this->load->model("Muser");
-        $this->load->model("Mlogin");
-        $this->load->library('form_validation');
-        if ($this->Mlogin->isNotLogin()) redirect(site_url('login'));
+
+        $this->load->model("Msatuan");
     }
 
     public function index()
     {
-        // $data["user"] = $this->Muser->getAll();
+
+
+
+        $data["satuan"] = $this->Msatuan->getAllData();
         $data['title'] = "Satuan Obat";
         $this->template->template('satuan/index', $data);
     }
-    //
-    // public function tambah()
-    // {
-    //     $pasien = $this->MPasien;
-    //     $validation = $this->form_validation;
-    //     $validation->set_rules($pasien->rules());
-    //
-    //     if ($validation->run()) {
-    //         $pasien->save();
-    //         redirect(site_url('pasien'));
-    //
-    //     }
-    //
-    //     $data["vaksin"] = $pasien->getVak();
-    //
-    //     $this->load->view("pasien/tambah", $data);
-    // }
 
-    // public function ubah($id = null)
-    // {
-    //     if (!isset($id)) redirect('pasien');
-    //
-    //     $pasien = $this->MPasien;
-    //     $validation = $this->form_validation;
-    //     $validation->set_rules($pasien->rules());
-    //
-    //     if ($validation->run()) {
-    //         $pasien->update();
-    //         redirect(site_url('pasien'));
-    //
-    //     }
-    //
-    //     $data["pasien"] = $pasien->getById($id);
-    //     $data["vaksin"] = $pasien->getVak();
-    //
-    //     if (!$data["pasien"]) show_404();
-    //
-    //     $this->load->view("pasien/ubah", $data);
-    // }
-
-
-    public function hapus($id = null)
+    public function tambah()
     {
-        if (!isset($id)) show_404();
+        $data = array('success' => false, 'messages' => array());
 
-        if ($this->MPasien->delete($id)) {
-            redirect(site_url('pasien'));
+        $this->form_validation->set_rules(
+            'satuan',
+            'Jenis',
+            'required|trim',
+            [
+                'required' => '%s Tidak Boleh Kosong'
+            ]
+        );
+        if ($this->form_validation->run()) {
+            $request = $this->Msatuan->insertSatuanData();
+            $data['success'] = $request['success'];
+            $data['message'] = $request['message'];
+        } else {
+            foreach ($_POST as $key => $val) {
+                $data['message'][$key] = form_error($key, '<div class="error text-danger">', '</div>');
+            }
+        }
+
+        echo json_encode($data);
+    }
+
+    public function updateStatus()
+    {
+        $request = $this->Msatuan->updateSatuanStatus();
+
+        if ($request['success']) {
+            redirect('satuan/');
         }
     }
 }

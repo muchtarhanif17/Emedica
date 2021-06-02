@@ -67,13 +67,15 @@ $route['apoteker/ubah/(:num)'] = 'Capoteker/ubah/$1';
 $route['apoteker/hapus/(:num)'] = 'Capoteker/hapus/$1';
 
 $route['satuan'] = 'Csatuan/index';
+$route['satuan/(:num)'] = 'Csatuan/index';
 $route['satuan/tambah'] = 'Csatuan/tambah';
 $route['satuan/ubah/(:num)'] = 'Csatuan/ubah/$1';
 $route['satuan/hapus/(:num)'] = 'Csatuan/hapus/$1';
 
 $route['obat'] = 'Cobat/index';
+$route['obat/(:num)'] = 'Cobat/index';
 $route['obat/tambah'] = 'Cobat/tambah';
-$route['obat/ubah/(:num)'] = 'Cobat/ubah/$1';
+$route['obat/edit/(:num)'] = 'Cobat/edit/';
 $route['obat/hapus/(:num)'] = 'Cobat/hapus/$1';
 
 $route['penjualan'] = 'Cpenjualan/index';

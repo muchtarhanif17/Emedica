@@ -9,24 +9,35 @@
 	</div>
 	<div class="card-body">
 		<div class="table">
-			<table class="table table-hover" width="100%" cellspacing="0">
+			<table id="table_id" class="display">
 				<thead>
 					<tr>
 						<th>No.</th>
 						<th>Nama</th>
 						<th>Email</th>
+						<th>Role</th>
 						<th>Status</th>
 						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					<?php $i = 1; ?>
 					<?php foreach ($user as $data) : ?>
 						<tr>
 
 							<td style="height: 50px;"> <?= ++$start; ?></td>
 							<td><?= $data['unama']; ?></td>
 							<td><?= $data['uemail']; ?></td>
+							<td>
+								<?php if ($data['role_user'] == '0') {
+									echo "Belum Ada Role";
+								} ?>
+								<?php foreach ($role_user as $role) :
+									if ($data['role_user'] == $role['id']) {
+										echo $role['role_user'];
+									}
+								endforeach;
+								?>
+							</td>
 							<?php if ($data['ustatus'] == 0) { ?>
 								<td>Tidak Aktif</td>
 							<?php } else { ?>
@@ -41,7 +52,7 @@
 
 				</tbody>
 			</table>
-			<?= $this->pagination->create_links(); ?>
+
 		</div>
 	</div>
 </div>
@@ -74,6 +85,17 @@
 					<input type="password" class="form-control" id="password" placeholder="Enter your password" name="password" />
 					<div class="invalid-feedback text-danger"></div>
 				</div>
+				<div class="form-group">
+					<label for="role">Role User</label>
+					<select name="role" id="role" class="custom-select">
+						<option value="" disabled>Pilih Role User</option>
+						<?php foreach ($role_user as $role) : ?>
+							<option value="<?= $role['id'] ?>">
+								<?= $role['role_user']; ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
@@ -88,3 +110,8 @@
 
 
 <script text="text/javascript" src="<?= base_url() ?>assets/js/create-user.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#table_id').dataTable();
+	});
+</script>

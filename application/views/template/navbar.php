@@ -17,60 +17,21 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li>
-            <a href="<?php echo site_url('dashboard/') ?>">
-              <i class="fa fa-dashboard"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-          <li class=" ">
-            <a href="<?php echo site_url('user/') ?>">
-              <i class="fa fa-user"></i>
-              <p>Data User</p>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo site_url('apoteker/') ?>">
-              <i class="fa fa-user-md"></i>
-              <p>Data Apoteker</p>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo site_url('satuan/') ?>">
-              <i class="fas fa-prescription-bottle-alt"></i>
-              <p>Data Satuan Obat</p>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo site_url('obat/') ?>">
-              <i class="fas fa-capsules"></i>
-              <p>Data Obat</p>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo site_url('penjualan/') ?>">
-              <i class="fas fa-shopping-basket"></i>
-              <p>Penjualan Obat</p>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo site_url('lappenjualan/') ?>">
-              <i class="fas fa-file-invoice"></i>
-              <p>Laporan Penjualan</p>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo site_url('lapterlaris/') ?>">
-              <i class="fas fa-file"></i>
-              <p>Laporan Obat Terlaris</p>
-            </a>
-          </li>
-          <li>
-            <a href="<?php echo site_url('logout') ?>">
-              <i class="fas fa-sign-out-alt"></i>
-              <p>Logout</p>
-            </a>
-          </li>
+
+          <?php foreach ($access as $acc) :
+            if ($acc['roleid'] == $user_logged['role_user']) :
+              foreach ($menu as $mn) :
+                if ($mn['mid'] == $acc['mid']) : ?>
+                  <li>
+                    <a href="<?php echo site_url($mn['murl'] . '/') ?>">
+                      <i class="<?= $mn['micon']; ?>"></i>
+                      <p><?= $mn['mnama'] ?></p>
+                    </a>
+                  </li>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            <?php endif; ?>
+          <?php endforeach; ?>
         </ul>
       </div>
     </div>

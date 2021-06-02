@@ -36,6 +36,10 @@ Coded by www.creative-tim.com
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="<?= base_url() ?>assets/demo/demo.css" rel="stylesheet" />
 
+  <!-- Datatables JS -->
+  <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/css/dataTable.css" />
+
+
   <!-- SweetAlert -->
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 

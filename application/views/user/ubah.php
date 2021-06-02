@@ -32,6 +32,17 @@
 						</select>
 					</div>
 				<?php endif; ?>
+				<div class="form-group">
+					<label for="role">Role</label>
+					<select name="role" id="role" class="custom-select">
+						<?php foreach ($role as $role) :
+							if ($data['role_user'] == $role['id']) : ?>
+								<option value="<?= $role['id']; ?>"><?= $role['role_user']; ?></option>
+							<?php endif; ?>
+							<option value="<?= $role['id'] ?>"><?= $role['role_user'] ?></option>
+						<?php endforeach; ?>
+					</select>
+				</div>
 				<input class="btn btn-success" type="submit" name="btn" value="Ubah" />
 				</form>
 			</div>
