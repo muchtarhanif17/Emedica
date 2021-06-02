@@ -17,16 +17,18 @@
 					<label for="satuan">Satuan</label>
 					<select name="satuan" id="satuan" class="custom-select">
 						<?php foreach ($sat as $row) :
-							if ($row['id'] == $data['satid']) : ?>
-								<option value="<?= $row['satid'] ?>">
-									<?= $row['satnama']; ?>
-								</option>
-							<?php endif;
-							if ($row['satstatus'] != 0) : ?>
-								<option value="<?= $row['satid'] ?>">
-									<?= $row['satnama']; ?>
-								</option>
-						<?php
+							if ($row['satstatus'] == 1) :
+								if ($row['satid'] == $data['satid']) {	?>
+									<option value="<?= $row['satid'] ?>" selected>
+										<?= $row['satnama']; ?>
+									</option>
+								<?php
+								} else {
+								?>
+									<option value="<?= $row['satid'] ?>">
+										<?= $row['satnama']; ?>
+									</option>
+						<?php }
 							endif;
 						endforeach; ?>
 					</select>
