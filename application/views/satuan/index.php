@@ -13,39 +13,27 @@
 					<tr>
 						<th>No.</th>
 						<th>Jenis</th>
-						<th>status</th>
 						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php $i = 0; ?>
-					<?php foreach ($satuan as $data) : ?>
-						<tr>
-							<td><?= ++$i; ?></td>
-							<td><?= $data['satnama'] ?></td>
-							<?php if ($data['satstatus'] == '1') : ?>
-								<td>Aktif</td>
+					<?php foreach ($satuan as $data) :
+						if ($data['satstatus'] != 0) : ?>
+							<tr>
+								<td><?= ++$i; ?></td>
+								<td><?= $data['satnama'] ?></td>
 								<td>
 									<?php echo form_open('Csatuan/updateStatus', array("id" => "form-status")) ?>
 									<input type="hidden" value="<?= $data['satid']; ?>" name="id">
 									<input type="hidden" value="<?= $data['satnama']; ?>" name="nama">
 									<input type="hidden" value="<?= $data['satstatus']; ?>" name="status">
-									<button type="submit" class="btn btn-danger">Nonktifkan</button>
+									<button type="submit" class="btn btn-danger">Hapus</button>
 									<?= form_close(); ?>
 								</td>
-							<?php endif; ?>
-							<?php if ($data['satstatus'] == '0') : ?>
-								<td>Tidak Aktif</td>
-								<td>
-									<?php echo form_open('Csatuan/updateStatus', array("id" => "form-status1")) ?>
-									<input type="hidden" value="<?= $data['satid']; ?>" name="id">
-									<input type="hidden" value="<?= $data['satstatus']; ?>" name="status">
-									<button type="submit" class="btn btn-success">Aktifkan</button>
-									<?= form_close(); ?>
-								</td>
-							<?php endif; ?>
-						</tr>
-					<?php endforeach; ?>
+							</tr>
+					<?php endif;
+					endforeach; ?>
 				</tbody>
 			</table>
 		</div>

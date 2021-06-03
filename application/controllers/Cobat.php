@@ -121,7 +121,7 @@ class Cobat extends CI_Controller
     public function hapus()
     {
         $id = $this->uri->segment('3');
-        $request = $this->Mobat->deleteData($id);
+        $request = $this->Mobat->deleteSoftData($id);
 
         echo "<script>alert(" . $request['message'] . ");</script>";
 

@@ -22,28 +22,30 @@
         </thead>
         <tbody>
           <?php $i = 0; ?>
-          <?php foreach ($data as $data) : ?>
-            <tr>
-              <td><?= ++$i; ?></td>
-              <td><?= $data['obnama']; ?></td>
-              <?php foreach ($sat as $satuan) : ?>
-                <?php if ($data['satid'] == $satuan['satid']) : ?>
-                  <td><?= $satuan['satnama'] ?></td>
-                <?php endif; ?>
-              <?php endforeach; ?>
-              <td><?= $data['obstok']; ?></td>
-              <td><?= $data['obharga']; ?></td>
-              <?php if ($data['obstatus'] == 1) { ?>
-                <td>Tersedia</td>
-              <?php } else { ?>
-                <td>habis</td>
-              <?php } ?>
-              <td>
-                <a class="btn btn-warning" href="<?= site_url("obat/edit/" . $data['obid'] . ""); ?>">Edit</a>
-                <a class="btn btn-danger" href="<?= site_url("obat/hapus/" . $data['obid'] . ""); ?>">Hapus</a>
-              </td>
-            </tr>
-          <?php endforeach; ?>
+          <?php foreach ($data as $data) :
+            if ($data['obsoftdel'] != 0) : ?>
+              <tr>
+                <td><?= ++$i; ?></td>
+                <td><?= $data['obnama']; ?></td>
+                <?php foreach ($sat as $satuan) : ?>
+                  <?php if ($data['satid'] == $satuan['satid']) : ?>
+                    <td><?= $satuan['satnama'] ?></td>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+                <td><?= $data['obstok']; ?></td>
+                <td><?= $data['obharga']; ?></td>
+                <?php if ($data['obstatus'] == 1) { ?>
+                  <td>Tersedia</td>
+                <?php } else { ?>
+                  <td>habis</td>
+                <?php } ?>
+                <td>
+                  <a class="btn btn-warning" href="<?= site_url("obat/edit/" . $data['obid'] . ""); ?>">Edit</a>
+                  <a class="btn btn-danger" href="<?= site_url("obat/hapus/" . $data['obid'] . ""); ?>">Hapus</a>
+                </td>
+              </tr>
+          <?php endif;
+          endforeach; ?>
         </tbody>
       </table>
     </div>
