@@ -23,7 +23,7 @@
         <tbody>
           <?php $i = 0; ?>
           <?php foreach ($data as $data) :
-            if ($data['obsoftdel'] != 0) : ?>
+            if ($data['obstatus'] != 0) : ?>
               <tr>
                 <td><?= ++$i; ?></td>
                 <td><?= $data['obnama']; ?></td>
@@ -34,7 +34,7 @@
                 <?php endforeach; ?>
                 <td><?= $data['obstok']; ?></td>
                 <td><?= $data['obharga']; ?></td>
-                <?php if ($data['obstatus'] == 1) { ?>
+                <?php if ($data['obstok'] != 0) { ?>
                   <td>Tersedia</td>
                 <?php } else { ?>
                   <td>habis</td>

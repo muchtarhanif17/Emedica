@@ -96,7 +96,7 @@ class Mobat extends CI_Model
     public function deleteSoftData($id)
     {
         $data = [
-            "obsoft" => 0
+            "obstatus" => 0
         ];
 
         $request = $this->db->update('tbl_obat', $data, array('obid' => $id));

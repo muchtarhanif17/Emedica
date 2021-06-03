@@ -9,7 +9,7 @@ class Cobat extends CI_Controller
         parent::__construct();
         $this->load->model("Mobat");
         $this->load->model('Msatuan');
-        $this->Mobat->checkedStock();
+        // $this->Mobat->checkedStock();
     }
 
     public function index()
