@@ -9,6 +9,7 @@ class Csatuan extends CI_Controller
         parent::__construct();
 
         $this->load->model("Msatuan");
+        $this->load->model("Mobat");
     }
 
     public function index()
@@ -48,9 +49,13 @@ class Csatuan extends CI_Controller
 
     public function updateStatus()
     {
-        $request = $this->Msatuan->updateSatuanStatus();
+        $dataObat = $this->Mobat->getAllData();
+        $request = $this->Msatuan->updateSatuanStatus($dataObat);
 
         if ($request['success']) {
+            redirect('satuan/');
+        } else {
+            echo "<script type='text/javascript'>alert(" . $request['message'] . ");</script>";
             redirect('satuan/');
         }
     }

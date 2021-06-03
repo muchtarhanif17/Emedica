@@ -41,11 +41,21 @@ class Msatuan extends CI_Model
         return $data;
     }
 
-    public function updateSatuanStatus()
+    public function updateSatuanStatus($dataObat = NULL)
     {
         $id = $this->input->post('id');
         $data['status'] = $this->input->post('status');
         $data['nama'] = $this->input->post('nama');
+
+        foreach ($dataObat as $do) {
+            if ($do['satid'] == $id) {
+                $data = [
+                    "success" => false,
+                    "message" => "Status Gagal Diperbarui"
+                ];
+                return $data;
+            }
+        }
 
         if ($data['status'] == 0) {
             $data = [
@@ -66,7 +76,7 @@ class Msatuan extends CI_Model
             ];
         } else {
             $data = [
-                "success" => true,
+                "success" => false,
                 "message" => "Status Gagal Diperbarui"
             ];
         }

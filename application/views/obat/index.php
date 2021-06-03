@@ -40,6 +40,7 @@
               <?php } ?>
               <td>
                 <a class="btn btn-warning" href="<?= site_url("obat/edit/" . $data['obid'] . ""); ?>">Edit</a>
+                <a class="btn btn-danger" href="<?= site_url("obat/hapus/" . $data['obid'] . ""); ?>">Hapus</a>
               </td>
             </tr>
           <?php endforeach; ?>

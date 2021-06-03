@@ -84,7 +84,7 @@ class Mobat extends CI_Model
             ];
         } else {
             $data = [
-                "success" => true,
+                "success" => false,
                 "message" => "Data Gagal Diupdate"
             ];
         }
@@ -92,6 +92,25 @@ class Mobat extends CI_Model
         return $data;
     }
 
+
+    public function deleteData($id)
+    {
+        $this->db->where('obid', $id);
+        $response = $this->db->delete('tbl_obat');
+
+        if ($response) {
+            $data = [
+                "success" => true,
+                "message" => "Data Telah Dihapus"
+            ];
+        } else {
+            $data = [
+                "success" => false,
+                "message" => "Data Gagal Dihapus"
+            ];
+        }
+        return $data;
+    }
 
 
 

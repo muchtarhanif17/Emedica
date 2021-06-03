@@ -118,12 +118,13 @@ class Cobat extends CI_Controller
     }
 
 
-    public function hapus($id = null)
+    public function hapus()
     {
-        if (!isset($id)) show_404();
+        $id = $this->uri->segment('3');
+        $request = $this->Mobat->deleteData($id);
 
-        if ($this->MPasien->delete($id)) {
-            redirect(site_url('pasien'));
-        }
+        echo "<script>alert(" . $request['message'] . ");</script>";
+
+        redirect('obat/');
     }
 }
