@@ -62,18 +62,12 @@ class Mobat extends CI_Model
     public function updateObatData()
     {
         $id = $this->input->post('id', true);
-        if ($this->input->post('stok', true)) {
-            $status = 1;
-        } else {
-            $status = 0;
-        }
 
         $data = [
             "satid" => htmlspecialchars($this->input->post('satuan', true)),
             "obnama" =>  htmlspecialchars($this->input->post('nama', true)),
             "obstok" =>  $this->input->post('stok', true),
             "obharga" =>  $this->input->post('harga', true),
-            "obstatus" => $status
         ];
 
         $request =  $this->db->update('tbl_obat', $data, array('obid' => $id));
