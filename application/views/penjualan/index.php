@@ -42,9 +42,9 @@
 
                   <div class="col-md-12">
                     <div class="col-md-12">
-                      <a href="{{ route('Penjualan.tambah')}}" class="btn btn-info">Tambah Obat</a>
+                      <a href="<?= site_url()?>/penjualan/obat/" class="btn btn-info">Tambah Obat</a>
                       <input type="submit" name="submit" class="btn btn-warning bayar" value="Bayar">
-                      <h2 class="pull-right">Rp.<span class="harga"> 36.000  </span> </h2>
+                      <h2 class="pull-right">Rp.<span class="harga"> <?= number_format($total,0,'.') ?> </span> </h2>
                     </div>
                     <div class="card-body">
                       <div class="table-responsive">
@@ -61,24 +61,28 @@
                           </thead>
 
                           <tbody>
-                              <!-- @each(cart in cart) -->
+                            <?php
+                          if ($obat != '') :
+
+                            foreach ($obat as $obat): ?>
                               <tr>
                                 <td> 1 </td>
-                                <td> Bodrex Extra </td>
-                                <td class="harga">Rp. 12.000</td>
+                                <td> <?= $obat['obnama']?> </td>
+                                <td class="harga">Rp. <?= number_format($obat['obharga'],0,'.');?></td>
                                 <td >
-                                  <a href="{{ route('Penjualan.plus', { id : cart.id_cart }) }}" class="btn btn-sm"><i class="fa fa-plus" aria-hidden="true"></i>
+                                  <a href="<?= site_url()?>/penjualan/tambah/<?= $obat['obid']?>" class="btn btn-sm"><i class="fa fa-plus" aria-hidden="true"></i>
                                   </a>
-                                  &nbsp;&nbsp; 3 &nbsp;&nbsp;
-                                  <a href="{{ route('Penjualan.min', { id : cart.id_cart }) }}" class="btn btn-sm"><i class="fa fa-minus" aria-hidden="true"></i>
+                                  &nbsp;&nbsp; <?= $obat['quantity'] ?> &nbsp;&nbsp;
+                                  <a href="<?= site_url()?>/penjualan/kurang/<?= $obat['obid']?>" class="btn btn-sm"><i class="fa fa-minus" aria-hidden="true"></i>
                                   </a>
                                 </td>
-                                <td class="harga"> Rp. 36.000</td>
+                                <td class="harga">Rp. <?= number_format(($obat['obharga']*$obat['quantity']),0,'.'); ?></td>
                                 <td>
-                                    <a href="{{ route('Penjualan.delete', { id : cart.id_cart }) }}" class="btn btn-warning">Delete</a>
+                                    <a href="<?= site_url()?>/penjualan/remove/<?= $obat['obid']?>" class="btn btn-warning">Delete</a>
                                 </td>
                               </tr>
-                              @endeach
+                            <?php endforeach;
+                          endif; ?>
                           </tbody>
                         </table>
                       </div>

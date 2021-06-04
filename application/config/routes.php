@@ -79,6 +79,13 @@ $route['obat/edit/(:num)'] = 'Cobat/edit/';
 $route['obat/hapus/(:num)'] = 'Cobat/hapus/$1';
 
 $route['penjualan'] = 'Cpenjualan/index';
+$route['penjualan/obat'] = 'Cpenjualan/obat';
+$route['penjualan/obat/pilih/(:num)'] = 'Cpenjualan/pilih/$1';
+$route['penjualan/tambah/(:num)'] = 'Cpenjualan/tambah/$1';
+$route['penjualan/kurang/(:num)'] = 'Cpenjualan/kurang/$1';
+$route['penjualan/remove/(:num)'] = 'Cpenjualan/remove/$1';
+
+
 $route['penjualan/bayar'] = 'Cpenjualan/bayar';
 
 $route['lappenjualan'] = 'Clappenjualan/index';
