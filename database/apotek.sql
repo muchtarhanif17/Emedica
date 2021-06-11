@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2021 at 07:58 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- Waktu pembuatan: 11 Jun 2021 pada 05.49
+-- Versi server: 10.4.17-MariaDB
+-- Versi PHP: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_access`
+-- Struktur dari tabel `tbl_access`
 --
 
 CREATE TABLE `tbl_access` (
@@ -34,7 +34,7 @@ CREATE TABLE `tbl_access` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_access`
+-- Dumping data untuk tabel `tbl_access`
 --
 
 INSERT INTO `tbl_access` (`accessid`, `roleid`, `mid`) VALUES
@@ -56,28 +56,7 @@ INSERT INTO `tbl_access` (`accessid`, `roleid`, `mid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_apoteker`
---
-
-CREATE TABLE `tbl_apoteker` (
-  `aptid` int(11) NOT NULL,
-  `aptnama` varchar(50) NOT NULL,
-  `aptstatus` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `tbl_apoteker`
---
-
-INSERT INTO `tbl_apoteker` (`aptid`, `aptnama`, `aptstatus`) VALUES
-(1, 'Rama Hamdani, Apt.', 0),
-(2, 'Linda arini, Apt.', 0),
-(3, 'Rudi Ahmad, Apt.', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_menu`
+-- Struktur dari tabel `tbl_menu`
 --
 
 CREATE TABLE `tbl_menu` (
@@ -88,7 +67,7 @@ CREATE TABLE `tbl_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_menu`
+-- Dumping data untuk tabel `tbl_menu`
 --
 
 INSERT INTO `tbl_menu` (`mid`, `mnama`, `murl`, `micon`) VALUES
@@ -103,7 +82,7 @@ INSERT INTO `tbl_menu` (`mid`, `mnama`, `murl`, `micon`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_obat`
+-- Struktur dari tabel `tbl_obat`
 --
 
 CREATE TABLE `tbl_obat` (
@@ -116,14 +95,14 @@ CREATE TABLE `tbl_obat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_obat`
+-- Dumping data untuk tabel `tbl_obat`
 --
 
 INSERT INTO `tbl_obat` (`obid`, `satid`, `obnama`, `obstok`, `obharga`, `obstatus`) VALUES
-(2, 1, 'Acetazolamide', 200, 1137, 1),
-(3, 1, 'Acetylcysteine', 16, 1001, 1),
-(4, 1, 'Acyclovir Tablet', 27, 1324, 1),
-(5, 2, 'Adapalene', 32, 1140, 1),
+(2, 1, 'Acetazolamide', 0, 12000, 0),
+(3, 1, 'Acetylcysteine', 0, 1001, 0),
+(4, 1, 'Acyclovir Tablet', 27, 1324, 0),
+(5, 2, 'Adapalene', 0, 1140, 1),
 (6, 5, 'Adem Sari', 31, 956, 1),
 (7, 3, 'Agonis Beta', 17, 1185, 1),
 (8, 4, 'Albendazole', 33, 1128, 1),
@@ -296,36 +275,108 @@ INSERT INTO `tbl_obat` (`obid`, `satid`, `obnama`, `obstok`, `obharga`, `obstatu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_penjualan`
+-- Struktur dari tabel `tbl_penjualan`
 --
 
 CREATE TABLE `tbl_penjualan` (
   `pjid` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
-  `aptid` int(11) NOT NULL,
   `pjfaktur` varchar(255) NOT NULL,
   `pjtgl` date NOT NULL,
   `pjtotal` int(11) NOT NULL,
+  `pjbayar` int(11) NOT NULL,
   `pjfeedback` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tbl_penjualan`
+--
+
+INSERT INTO `tbl_penjualan` (`pjid`, `uid`, `pjfaktur`, `pjtgl`, `pjtotal`, `pjbayar`, `pjfeedback`) VALUES
+(16, 48, 'PJ20210610115928', '2021-06-08', 6981, 7000, ''),
+(17, 48, 'PJ20210610115937', '2021-06-08', 6981, 10000, ''),
+(18, 48, 'PJ20210610122420', '2021-06-07', 6291, 10000, 'good'),
+(19, 48, 'PJ20210610011249', '2021-06-07', 5790, 7000, ''),
+(20, 48, 'PJ20210610011401', '2021-06-08', 9300, 10000, ''),
+(21, 48, 'PJ20210610012517', '2021-06-09', 12685, 1321314, ''),
+(22, 48, 'PJ20210610012536', '2021-06-09', 12685, 1231241412, ''),
+(23, 48, 'PJ20210610012629', '2021-06-09', 12685, 34324123, ''),
+(24, 48, 'PJ20210610012821', '2021-06-10', 12685, 112223, ''),
+(25, 48, 'PJ20210610012841', '2021-06-10', 12685, 60000, ''),
+(26, 48, 'PJ20210610012841', '2021-06-11', 12685, 60000, ''),
+(27, 48, 'PJ20210610013212', '2021-06-10', 12685, 10000, ''),
+(28, 48, 'PJ20210610051413', '2021-06-10', 12685, 15000, 'good'),
+(29, 48, 'PJ20210610063447', '2021-06-10', 4053, 312313124, 'bad'),
+(30, 48, 'PJ20210610070342', '2021-06-10', 2896, 1500, 'good'),
+(31, 48, 'PJ20210611040200', '2021-06-13', 2325, 3000, 'good'),
+(32, 48, 'PJ20210611054131', '2021-06-11', 1624, 1800, '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_penjualan_detail`
+-- Struktur dari tabel `tbl_penjualan_detail`
 --
 
 CREATE TABLE `tbl_penjualan_detail` (
   `pjdid` int(11) NOT NULL,
   `pjid` int(11) NOT NULL,
   `obid` int(11) NOT NULL,
-  `pjqty` int(11) NOT NULL
+  `pjdqty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tbl_penjualan_detail`
+--
+
+INSERT INTO `tbl_penjualan_detail` (`pjdid`, `pjid`, `obid`, `pjdqty`) VALUES
+(16, 16, 5, 1),
+(17, 16, 7, 2),
+(18, 16, 43, 3),
+(19, 17, 5, 1),
+(20, 17, 7, 2),
+(21, 17, 43, 3),
+(22, 18, 142, 3),
+(23, 18, 173, 2),
+(24, 19, 5, 4),
+(25, 19, 11, 1),
+(26, 20, 11, 2),
+(27, 20, 5, 6),
+(28, 21, 5, 3),
+(29, 21, 11, 2),
+(30, 21, 13, 5),
+(31, 22, 5, 3),
+(32, 22, 11, 2),
+(33, 22, 13, 5),
+(34, 23, 5, 3),
+(35, 23, 11, 2),
+(36, 23, 13, 5),
+(37, 24, 5, 3),
+(38, 24, 11, 2),
+(39, 24, 13, 5),
+(40, 25, 5, 3),
+(41, 25, 11, 2),
+(42, 25, 13, 5),
+(43, 26, 5, 3),
+(44, 26, 11, 2),
+(45, 26, 13, 5),
+(46, 27, 5, 3),
+(47, 27, 11, 2),
+(48, 27, 13, 5),
+(49, 28, 5, 3),
+(50, 28, 11, 2),
+(51, 28, 13, 5),
+(52, 29, 6, 3),
+(53, 29, 7, 1),
+(54, 30, 9, 1),
+(55, 30, 14, 2),
+(56, 31, 7, 1),
+(57, 31, 5, 1),
+(58, 32, 14, 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_role_user`
+-- Struktur dari tabel `tbl_role_user`
 --
 
 CREATE TABLE `tbl_role_user` (
@@ -334,7 +385,7 @@ CREATE TABLE `tbl_role_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_role_user`
+-- Dumping data untuk tabel `tbl_role_user`
 --
 
 INSERT INTO `tbl_role_user` (`id`, `role_user`) VALUES
@@ -345,7 +396,7 @@ INSERT INTO `tbl_role_user` (`id`, `role_user`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_satuan_obat`
+-- Struktur dari tabel `tbl_satuan_obat`
 --
 
 CREATE TABLE `tbl_satuan_obat` (
@@ -355,7 +406,7 @@ CREATE TABLE `tbl_satuan_obat` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_satuan_obat`
+-- Dumping data untuk tabel `tbl_satuan_obat`
 --
 
 INSERT INTO `tbl_satuan_obat` (`satid`, `satnama`, `satstatus`) VALUES
@@ -369,7 +420,7 @@ INSERT INTO `tbl_satuan_obat` (`satid`, `satnama`, `satstatus`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user`
+-- Struktur dari tabel `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -382,7 +433,7 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_user`
+-- Dumping data untuk tabel `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`uid`, `unama`, `uemail`, `upassword`, `role_user`, `ustatus`) VALUES
@@ -396,120 +447,108 @@ INSERT INTO `tbl_user` (`uid`, `unama`, `uemail`, `upassword`, `role_user`, `ust
 (45, 'DEVI HARI GUNAWAN,SE', 'asd123@gmail.com', '$2y$10$vrQIO81sH/83XpvMXVQEqeUHM1p8FP5keVuqNlmz6DuS7lSpvbPxq', 1, 0),
 (46, 'DEVI HARI', 'rhezarizqi.if@gmail.com', '$2y$10$s/VxapNC3c97xPiN/28KreSqHIMHw3/8oc2.Jcs2CWRRUCm4Z2pMG', 0, 1),
 (47, 'Budi', 'rheza@gmail.com', '$2y$10$rbT3pyq1qhYSRigma/o5Wuz4G7IpzhNWXyOslHkKG0qE444WycYZC', 0, 1),
-(48, 'Aghil Syahputro', 'aghil@gmail.com', '$2y$10$n3MXhYUrKh65Vk8xq5zVJ.NQ3GsZ9nZuMs7OS/q8YqneScdPidFU6', 3, 1);
+(48, 'Super User', 'superuser@gmail.com', '$2y$10$8Nl.UmNyduflwwOqP//fee1oCcOKHP0K6sk5K0xt08X1gvlfvMxki', 3, 1);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbl_access`
+-- Indeks untuk tabel `tbl_access`
 --
 ALTER TABLE `tbl_access`
   ADD PRIMARY KEY (`accessid`);
 
 --
--- Indexes for table `tbl_apoteker`
---
-ALTER TABLE `tbl_apoteker`
-  ADD PRIMARY KEY (`aptid`);
-
---
--- Indexes for table `tbl_menu`
+-- Indeks untuk tabel `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
   ADD PRIMARY KEY (`mid`);
 
 --
--- Indexes for table `tbl_obat`
+-- Indeks untuk tabel `tbl_obat`
 --
 ALTER TABLE `tbl_obat`
   ADD PRIMARY KEY (`obid`);
 
 --
--- Indexes for table `tbl_penjualan`
+-- Indeks untuk tabel `tbl_penjualan`
 --
 ALTER TABLE `tbl_penjualan`
   ADD PRIMARY KEY (`pjid`);
 
 --
--- Indexes for table `tbl_penjualan_detail`
+-- Indeks untuk tabel `tbl_penjualan_detail`
 --
 ALTER TABLE `tbl_penjualan_detail`
   ADD PRIMARY KEY (`pjdid`);
 
 --
--- Indexes for table `tbl_role_user`
+-- Indeks untuk tabel `tbl_role_user`
 --
 ALTER TABLE `tbl_role_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_satuan_obat`
+-- Indeks untuk tabel `tbl_satuan_obat`
 --
 ALTER TABLE `tbl_satuan_obat`
   ADD PRIMARY KEY (`satid`);
 
 --
--- Indexes for table `tbl_user`
+-- Indeks untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`uid`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tbl_access`
+-- AUTO_INCREMENT untuk tabel `tbl_access`
 --
 ALTER TABLE `tbl_access`
   MODIFY `accessid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `tbl_apoteker`
---
-ALTER TABLE `tbl_apoteker`
-  MODIFY `aptid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `tbl_menu`
+-- AUTO_INCREMENT untuk tabel `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
   MODIFY `mid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tbl_obat`
+-- AUTO_INCREMENT untuk tabel `tbl_obat`
 --
 ALTER TABLE `tbl_obat`
   MODIFY `obid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=177;
 
 --
--- AUTO_INCREMENT for table `tbl_penjualan`
+-- AUTO_INCREMENT untuk tabel `tbl_penjualan`
 --
 ALTER TABLE `tbl_penjualan`
-  MODIFY `pjid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `pjid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
--- AUTO_INCREMENT for table `tbl_penjualan_detail`
+-- AUTO_INCREMENT untuk tabel `tbl_penjualan_detail`
 --
 ALTER TABLE `tbl_penjualan_detail`
-  MODIFY `pjdid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `pjdid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
--- AUTO_INCREMENT for table `tbl_role_user`
+-- AUTO_INCREMENT untuk tabel `tbl_role_user`
 --
 ALTER TABLE `tbl_role_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `tbl_satuan_obat`
+-- AUTO_INCREMENT untuk tabel `tbl_satuan_obat`
 --
 ALTER TABLE `tbl_satuan_obat`
   MODIFY `satid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `tbl_user`
+-- AUTO_INCREMENT untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `uid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
