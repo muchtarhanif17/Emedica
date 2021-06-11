@@ -31,7 +31,7 @@
       <div class="col-md-4">
         <div class="card card-chart">
           <div class="card-header card-header-primary" style="color:#56C596">
-            <h2><i class="fas fa-file-invoice-dollar"></i> Omzet Penjualan </h2>
+            <h2><i class="fas fa-file-invoice-dollar"></i> Omzet </h2>
           </div>
           <div class="card-body">
             <p class="card-category" >Omzet Penjualan Bulan ini</p>
