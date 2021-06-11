@@ -1,36 +1,44 @@
 <div class="card" style="min-width:800px;margin:auto">
 	<div class="card-header">
-
-
+<br>
+<h2 align="center">
+	Laporan Obat Terlaris
+</h2>
 	</div>
 	<div class="card-body">
-
+			<br>
 		<div class="table-responsive">
-			<table class="table table-hover" width="100%" cellspacing="0">
+			<table class="display" width="100%" cellspacing="0" id="table_id">
 				<thead>
 					<tr>
 						<th>No.</th>
-						<th>Nama</th>
-						<th>Status</th>
-						<th>Action</th>
+						<th>Nama Obat</th>
+						<th>Total Terjual</th>
 					</tr>
 				</thead>
 				<tbody>
+					<?php $no=1;$gtotals=0;
+					foreach ($lap as $lap): ?>
+						<tr>
+							<td> <?= $no++ ?></td>
+							<td> <?= $lap['obnama']?> </td>
+							<td> <?= $lap['totals']?> </td>
 
-					<tr>
-						<td> 1</td>
-						<td>Andre S.Farm, Apt</td>
-						<td>Aktif</td>
-						<td>
-							<a class="btn btn-success" href="#">Non Aktifkan</a>
-							<a class="btn btn-warning" href="#">Aktifkan</a>
-						</td>
+						</tr>
+					<?php
+				endforeach; ?>
 
-
-					</tr>
 
 				</tbody>
 			</table>
 		</div>
 	</div>
 </div>
+
+
+<script>
+	$(document).ready(function() {
+		$('#table_id').dataTable();
+
+	});
+</script>

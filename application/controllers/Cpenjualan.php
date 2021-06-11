@@ -22,13 +22,22 @@ class Cpenjualan extends CI_Controller
         if($this->session->has_userdata('cart')) {
           $data['obat'] = array_values(unserialize($this->session->userdata('cart')));
           $data['total'] = $this->total();
+          // for ($i=0; $i <count($data['obat']); $i++) {
+          //   echo $data['obat'][$i]['obid'];
+          //   echo "<br>";
+          // }
+          // die();
         }else {
           $data['obat'] = '';
           $data['total'] = 0;
         }
 
 
+        $data['pjfaktur'] = "PJ".date("Ymdhis");
+        $data['user'] = $this->session->userdata('user_logged');
+        $data['pjtgl'] = date("Y-m-d");
         $data['title'] = "Penjualan Obat";
+
         $this->template->template('penjualan/index', $data);
     }
 
@@ -38,13 +47,6 @@ class Cpenjualan extends CI_Controller
 
       $this->template->template('penjualan/obat', $data);
     }
-
-    // public function index()
-    //   {
-    //       $data['items'] = array_values(unserialize($this->session->userdata('cart')));
-    //       $data['total'] = $this->total();
-    //       $this->load->view('cart/index', $data);
-    //   }
 
       public function pilih($id)
       {
@@ -131,53 +133,46 @@ class Cpenjualan extends CI_Controller
         }
 
       }
-    //
-    // public function tambah()
-    // {
-    //     $pasien = $this->MPasien;
-    //     $validation = $this->form_validation;
-    //     $validation->set_rules($pasien->rules());
-    //
-    //     if ($validation->run()) {
-    //         $pasien->save();
-    //         redirect(site_url('pasien'));
-    //
-    //     }
-    //
-    //     $data["vaksin"] = $pasien->getVak();
-    //
-    //     $this->load->view("pasien/tambah", $data);
-    // }
 
-    // public function ubah($id = null)
-    // {
-    //     if (!isset($id)) redirect('pasien');
-    //
-    //     $pasien = $this->MPasien;
-    //     $validation = $this->form_validation;
-    //     $validation->set_rules($pasien->rules());
-    //
-    //     if ($validation->run()) {
-    //         $pasien->update();
-    //         redirect(site_url('pasien'));
-    //
-    //     }
-    //
-    //     $data["pasien"] = $pasien->getById($id);
-    //     $data["vaksin"] = $pasien->getVak();
-    //
-    //     if (!$data["pasien"]) show_404();
-    //
-    //     $this->load->view("pasien/ubah", $data);
-    // }
+      public function bayar()
+      {
 
+          if ($_POST['pjfaktur']!='' && $_POST['pjtgl'] !='' && $_POST['uid']!='' && $_POST['pjbayar']!='' ) {
+            $insert_id = $this->Mpenjualan->insertPenjualan();
+            $this->session->unset_userdata('cart');
+            
+            echo "<script>window.open('".site_url('penjualan/feedback/').$insert_id."');</script>";
+            echo "<script>window.open('".site_url('penjualan/struk/').$insert_id."');</script>";
 
-    public function hapus($id = null)
-    {
-        if (!isset($id)) show_404();
+            echo "<script>window.location.href='".site_url('penjualan')."'</script>";
+          }
+      }
 
-        if ($this->MPasien->delete($id)) {
-            redirect(site_url('pasien'));
-        }
-    }
+      public function struk($id){
+        $data['lap'] = $this->Mpenjualan->getStruk($id);
+        // echo "<pre>";
+        // var_dump($data['lap']);
+        // die();
+        $data['lapd'] = $this->Mpenjualan->getStrukDetail($id);
+
+        $this->load->view('penjualan/struk',$data);
+      }
+
+      public function feedback($id){
+        $data['id'] = $id;
+        $this->template->template('penjualan/feedback',$data);
+
+      }
+
+      public function goodfb($id){
+        $this->Mpenjualan->goodfb($id);
+        echo "<script>window.close()</script>";
+
+      }
+
+      public function badfb($id){
+        $this->Mpenjualan->badfb($id);
+        echo "<script>window.close()</script>";
+      }
+
 }

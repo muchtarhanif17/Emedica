@@ -6,19 +6,19 @@
             </div>
             <div class="card-body">
               <br>
-              <form action="{{ route('Penjualan.store') }}" method="post">
+              <form action="<?= site_url() ?>/penjualan/bayar" method="post">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="col-md-12">
                       <div class="form-group">
                           <label class="">No Faktur</label>
-                          <input class="form-control" type="text" name="nofaktur" value="" required>
+                          <input class="form-control" type="text" name="pjfaktur" value="<?= $pjfaktur ?>" required>
                       </div>
                     </div>
                     <div class="col-md-12">
                       <div class="form-group">
                           <label class="">Tanggal</label>
-                          <input class="form-control date" type="date" name="tanggal" value="" required>
+                          <input class="form-control date" type="date" name="pjtgl" value="<?= $pjtgl ?>" required>
 
                       </div>
                     </div>
@@ -27,14 +27,17 @@
                     <div class="col-md-12">
                       <div class="form-group">
                           <label class="">Kasir</label>
-                          <input class="form-control" type="text" name="user" value="Agil Syahputro" disabled>
-                          <input class="hide" type="hidden" name="gtotal" value="">
+                          <input class="form-control" type="text" name="unama" value="<?= $user['unama'] ?>" disabled>
                       </div>
                     </div>
+
+                    <input class="hide" type="hidden" name="uid" value="<?= $user['uid']?>">
+                    <input class="hide" type="hidden" name="pjtotal" value="<?= $total?>">
+
                     <div class="col-md-12">
                       <div class="form-group">
                           <label class="">Jumlah Bayar</label>
-                          <input class="form-control" type="number" name="jml_bayar" value="" required>
+                          <input class="form-control" type="number" name="pjbayar" value="" required>
                       </div>
                     </div>
 
@@ -110,14 +113,6 @@
 
       });
 
-      if ($('.hide').val()=='') {
-
-        $('.bayar').click(function(event){
-          alert('Anda Belum Menambah Obat');
-          event.preventDefault()
-
-        });
-      }
     });
 
   </script>

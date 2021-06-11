@@ -85,10 +85,17 @@ $route['penjualan/tambah/(:num)'] = 'Cpenjualan/tambah/$1';
 $route['penjualan/kurang/(:num)'] = 'Cpenjualan/kurang/$1';
 $route['penjualan/remove/(:num)'] = 'Cpenjualan/remove/$1';
 
+$route['penjualan/struk/(:num)'] = 'Cpenjualan/struk/$1';
+$route['penjualan/feedback/(:num)'] = 'Cpenjualan/feedback/$1';
+$route['penjualan/badfb/(:num)'] = 'Cpenjualan/badfb/$1';
+$route['penjualan/goodfb/(:num)'] = 'Cpenjualan/goodfb/$1';
+
 
 $route['penjualan/bayar'] = 'Cpenjualan/bayar';
 
 $route['lappenjualan'] = 'Clappenjualan/index';
+$route['lappenjualan/getlaporandetail/(:num)'] = 'Clappenjualan/getlaporandetail/$1';
+
 $route['lapterlaris'] = 'Clapterlaris/index';
 
 

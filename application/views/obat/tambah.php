@@ -18,7 +18,6 @@
     								<input class="form-control <?php echo form_error('vaknama') ? 'is-invalid':'' ?>"
     								 type="text" name="vaknama" />
     								<div class="invalid-feedback">
-    									<?php echo form_error('vaknama') ?>
     								</div>
     							</div>
 
