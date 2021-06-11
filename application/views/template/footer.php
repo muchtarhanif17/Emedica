@@ -1,7 +1,7 @@
 </div>
 </div>
 </div>
-<footer class="footer footer-black  footer-white " style="position:inherit;bottom:0">
+<footer class="footer footer-black  footer-white row" style="display:inline">
         <div class="container-fluid">
           <div class="row">
             <nav class="footer-nav">

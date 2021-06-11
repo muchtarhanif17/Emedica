@@ -104,14 +104,6 @@
   <script type="text/javascript">
 
     $(document).ready( function () {
-      $('.harga').number( true, 2 );
-      $('#myTable').DataTable({
-        "dom": 'lrtip',
-        "lengthChange": false,
-        "pageLength": 5
-
-
-      });
 
     });
 
