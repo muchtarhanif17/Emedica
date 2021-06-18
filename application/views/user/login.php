@@ -13,14 +13,14 @@
     <form method="post">
       <div class="form-group">
         <label for="email">Email </label>
-        <input class="form-control <?php echo form_error('uemail') ? 'is-invalid' : '' ?>" type="text" name="uemail" />
+        <input class="form-control <?php echo form_error('uemail') ? 'is-invalid' : '' ?>" type="email" name="uemail" />
         <div class="invalid-feedback">
           <?php echo form_error('uemail') ?>
         </div>
       </div>
       <div class="form-group">
         <label for="password">Passowrd </label>
-        <input class="form-control <?php echo form_error('upassword') ? 'is-invalid' : '' ?>" type="text" name="upassword" />
+        <input class="form-control <?php echo form_error('upassword') ? 'is-invalid' : '' ?>" type="password" name="upassword" />
         <div class="invalid-feedback">
           <?php echo form_error('upassword') ?>
         </div>
