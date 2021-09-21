@@ -1,2 +1,2 @@
-# Emedica
+# E Medica
 FP Pemrograman Framework B
